@@ -1,0 +1,35 @@
+.st-seat {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-width: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 80, 151);
+    transition: all 0.2s ease 0s;
+    background-color: rgb(255, 255, 255);
+}
+
+.st-available-seat:hover {
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 0.5rem 0px;
+    cursor: pointer;
+    transform: scale(1.1);
+    z-index: 500;
+}
+
+.st-occupied-seat {
+    background-color: rgb(211, 222, 230);
+    cursor: no-drop;
+}
+
+.st-seat span {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.st-select-seat {
+    background-color: rgb(239, 206, 35);
+    color: white;
+}

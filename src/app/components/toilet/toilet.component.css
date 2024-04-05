@@ -1,0 +1,23 @@
+.st-toilet {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-width: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 80, 151);
+    transition: all 0.2s ease 0s;
+    cursor: no-drop;
+    background-color: rgb(0, 80, 151);
+}
+
+.st-toilet:hover {
+    filter: blur(0.05rem); 
+    transition: filter 0.1s ease;
+}
+
+img {
+    height: 2.3rem;
+}

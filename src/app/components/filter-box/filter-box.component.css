@@ -1,0 +1,42 @@
+.st-filter {
+    margin: 0px 65px;
+}
+
+.st-filter__box {
+    position: relative;
+    background-color: #FDFDFD;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3); /* Propiedad de sombra */
+    padding: 10px 30px;
+    margin: -15px 40px 0px 40px;
+}
+
+/* Esto se aplica cuando se empieza a perder la visibilidad */
+.st-filter__box.bg {
+    background-color: #142b40;
+    box-shadow: none;
+}
+.sticky-lg-top.stuck  {
+    background-color: #142b40;
+    margin: 0px;
+}
+/* -------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+    .st-filter {
+        margin: 0px 20px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .st-filter {
+        background-color: #142b40;
+        margin: 0px;
+    }
+    .st-filter__box{
+        background-color: #142b40;
+        margin: 0px 10px;
+        box-shadow: none;
+    }
+}

@@ -25,9 +25,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "libs/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css",
+              "libs/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "libs/jquery.js" ,
+              "libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js",
+              "libs/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -89,6 +99,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -96,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5bb270f9-2242-4aa8-83f9-324dc2ea1c54"
   }
 }

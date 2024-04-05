@@ -1,0 +1,43 @@
+.st-container-item {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+hr {
+    width: 100%;
+    background-color: gray;
+}
+
+.st-btn {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: blue;
+    color: white;
+    line-height: 32px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.st-title {
+    margin-right: 8px;
+    text-wrap: nowrap;
+}
+
+/* Estilo inicial del contenedor */
+.contenedor {
+    margin: 0 10% 0 15%;
+  }
+  
+  @media (max-width: 1200px) {
+    .contenedor {
+      margin: 0 5% 0 7.5%; 
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .contenedor {
+      display: none;
+    }
+  }
