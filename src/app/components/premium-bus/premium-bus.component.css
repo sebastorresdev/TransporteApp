@@ -1,0 +1,88 @@
+.st-car {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 1.5rem;
+    width: 21rem;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    background-color:fff;
+    border: 1px solid rgb(26, 81, 153);
+}
+
+.st-floor {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+hr {
+    background-color: black;
+    width: 100%;
+    height: 2px;
+}
+.st-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    width: 90%;
+    height: 2.5rem;
+    color: rgb(34, 35, 36);
+    background-color: rgb(228, 232, 238);
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    margin: 1rem;
+}
+h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.st-front span {
+    font-weight: 700;
+}
+
+.st-seats {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.st-row {
+    display: flex;
+    width: 100%;
+    height: 4rem;
+}
+
+.st-col {
+    display: flex;
+    width: 45%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.st-row-pass {
+    display: flex;
+    width: 10%;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+}
+.eRbrRf {
+    position: relative;
+    width: 2.5rem;
+    fill: rgb(32, 65, 90);
+}
+.st-footer {
+    position: relative;
+    width: 90%;
+    height: 2.5rem;
+    background-color: rgb(228, 232, 238);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    margin: 10px;
+}

@@ -12,6 +12,7 @@ export class SeatComponent {
   @Input() floorNumber:string;
   @Input() isAvailable: boolean;
   selectedSeatNumber:string='';
+  
   @Output() datosEnviados = new EventEmitter<{ seatNumber: string, floorNumber: string }>();
   selectedSeat = false;
   

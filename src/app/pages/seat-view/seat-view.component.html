@@ -1,4 +1,52 @@
 <app-header></app-header>
+<br>
 <app-stepper></app-stepper>
-<hr style="color: red;">
-<app-bus [serviceType]="'economic'"></app-bus>
+<hr style="color: rgb(20, 43, 64);">
+
+<div class="st-container">
+    <div class="st-container-bus">
+        <h5>Elige tu asientos</h5>
+        <div>
+            <app-economic-bus (dataExit)="onActionFromParent($event)"></app-economic-bus>
+        </div>
+    </div>
+    <div class="st-info">
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab header="Su selección de viaje" [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </p-accordionTab>
+                <div class="st-description">
+                    Lima -> Cusco abr.11
+                </div>
+        </p-accordion>
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab header="Tus asientos"  [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
+                <p>Lima -> Cusco</p>
+                @for (item of items; track item; let idx = $index, e = $even) {
+                    
+                    <div class="st-items">
+                        <span>Pasajero {{idx + 1}}</span>
+                        <span>S/ {{item.seatNumber}}</span>
+                    </div>
+                }
+            </p-accordionTab>
+            @if(isEnable) {
+                <div class="st-description st-bold">
+                    Total S/ 0
+                </div>
+            }@else {
+                <div class="st-description">
+                    No hay asientos seleccionados
+                </div>
+            }
+            
+        </p-accordion>
+        <a class="btn btn-warning p-2 rounded-3" style="width: 100%; font-size: 18px; font-weight: bold; color: rgb(3, 82, 150);"
+        (click)="showError()">Continuar con los pasajero</a>
+    </div>
+</div>
+
+
