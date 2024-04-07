@@ -7,7 +7,8 @@
     <div class="st-container-bus">
         <h5>Elige tu asientos</h5>
         <div>
-            <app-economic-bus (dataExit)="onActionFromParent($event)"></app-economic-bus>
+            <app-economic-bus (dataExit)="onActionFromParent($event)" [seatSelectionAvailable]="seatSelectionAvailable"></app-economic-bus>
+            <app-vip-bus></app-vip-bus>
         </div>
     </div>
     <div class="st-info">
@@ -44,6 +45,7 @@
             }
             
         </p-accordion>
+        <p-toast></p-toast>
         <a class="btn btn-warning p-2 rounded-3" style="width: 100%; font-size: 18px; font-weight: bold; color: rgb(3, 82, 150);"
         (click)="showError()">Continuar con los pasajero</a>
     </div>

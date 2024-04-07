@@ -30,24 +30,33 @@
                 <hr>
                 <div class="st-row">
                     <div class="st-col">
-                        <app-seat floorNumber="01" seatNumber="02" (datosEnviados)="onSeatClicked($event)"></app-seat>
-                        <app-seat floorNumber="01" seatNumber="03" (datosEnviados)="onSeatClicked($event)"></app-seat></div>
+                        <app-seat floorNumber="01" seatNumber="02" (datosEnviados)="onSeatClicked($event)" [isAvailable]="isSeatAviable(2,1)"
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat>
+                        <app-seat floorNumber="01" seatNumber="03" (datosEnviados)="onSeatClicked($event)" 
+                        [isAvailable]="isSeatAviable(3,1)"
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat></div>
                     <div class="st-row-pass">
                     </div>
                     <div class="st-col">
                         <div></div>
-                        <app-seat floorNumber="01" seatNumber="01" (datosEnviados)="onSeatClicked($event)"></app-seat>
+                        <app-seat floorNumber="01" seatNumber="01" (datosEnviados)="onSeatClicked($event)" [isAvailable]="isSeatAviable(1,1)"
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat>
                     </div>
                 </div>
                 <div class="st-row">
                     <div class="st-col">
-                        <app-seat floorNumber="01" seatNumber="05" (datosEnviados)="onSeatClicked($event)"></app-seat>
-                        <app-seat floorNumber="01" seatNumber="06" (datosEnviados)="onSeatClicked($event)"></app-seat></div>
+                        <app-seat floorNumber="01" seatNumber="05" (datosEnviados)="onSeatClicked($event)" 
+                        [isAvailable]="isSeatAviable(5,1)"
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat>
+                        <app-seat floorNumber="01" seatNumber="06" (datosEnviados)="onSeatClicked($event)"
+                        [isAvailable]="isSeatAviable(6,1)"
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat></div>
                     <div class="st-row-pass">
                     </div>
                     <div class="st-col">
                         <div></div>
-                        <app-seat seatNumber="04"></app-seat>
+                        <app-seat seatNumber="04" floorNumber="01" [isAvailable]="isSeatAviable(4,1)" (datosEnviados)="onSeatClicked($event)"
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat>
                     </div>
                 </div>
                 <div class="st-row">

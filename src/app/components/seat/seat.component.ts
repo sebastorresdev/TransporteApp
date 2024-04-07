@@ -15,6 +15,7 @@ export class SeatComponent {
   
   @Output() datosEnviados = new EventEmitter<{ seatNumber: string, floorNumber: string }>();
   selectedSeat = false;
+  @Input() seatSelectionAvailable = true;
   
   constructor() {
     this.isAvailable = true;
@@ -23,8 +24,10 @@ export class SeatComponent {
   }
 
   onSeatClick(seatNumber : string, floorNumber:string) {
+    if (this.selectedSeat || this.seatSelectionAvailable) {
+      this.selectedSeat = !this.selectedSeat;
+    }
     this.selectedSeatNumber = seatNumber;
-    this.selectedSeat = !this.selectedSeat;
     this.datosEnviados.emit({ seatNumber: seatNumber, floorNumber: floorNumber });
   }
 }

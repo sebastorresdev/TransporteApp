@@ -28,8 +28,9 @@
                 </div>
                 <div class="st-row">
                     <div class="st-col">
-                        <app-seat floorNumber="01" seatNumber="01" (datosEnviados)="onSeatClicked($event)"></app-seat>
-                        <app-seat floorNumber="01" seatNumber="02" (datosEnviados)="onSeatClicked($event)"></app-seat></div>
+                        <app-seat floorNumber="01" seatNumber="01" (datosEnviados)="onSeatClicked($event)" [isAvailable]="isSeatAviable(1,1)" 
+                        [seatSelectionAvailable]="seatSelectionAvailable"></app-seat>
+                        <app-seat floorNumber="01" seatNumber="02" (datosEnviados)="onSeatClicked($event)" [seatSelectionAvailable]="seatSelectionAvailable" [isAvailable]="isSeatAviable(2,1)" ></app-seat></div>
                     <div class="st-row-pass">
                     </div>
                     <div class="st-col">

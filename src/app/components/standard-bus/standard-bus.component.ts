@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter, Input } from '@angular/core';
 import { SeatComponent } from '../seat/seat.component';
 import { StairComponent } from '../stair/stair.component';
 import { ToiletComponent } from '../toilet/toilet.component';
@@ -15,18 +15,25 @@ import { ToiletComponent } from '../toilet/toilet.component';
   styleUrl: './standard-bus.component.css'
 })
 export class StandardBusComponent {
-  selectedSeats: { floorNumber: string, seatNumber: string }[] = [];
+  @Output() dataExit = new EventEmitter<{ seatNumber: string, floorNumber: string }>();
+  @Input() seatSelectionAvailable = true;
+
+  arraySeats : {seatNumber:number, floorNumber:number, seatAvailable:boolean}[] = [];
+  ngOnInit() {
+    for (let i = 1; i <= 44; i++) {
+      this.arraySeats.push({seatNumber: i, floorNumber: 1,seatAvailable: Math.random() < 0.5 });
+    }
+  }    
 
   onSeatClicked(seat: { floorNumber: string, seatNumber: string }) {
-    const index = this.selectedSeats.findIndex(s => s.floorNumber === seat.floorNumber && s.seatNumber === seat.seatNumber);
-    if (index !== -1) {
-      this.selectedSeats.splice(index, 1); // Eliminar si ya estaba seleccionado
-      console.log('elimino');
-    } else {
-      this.selectedSeats.push(seat); // Agregar si no estaba seleccionado
-      console.log('agrego');
-    }
+    this.dataExit.emit(seat);
+  }
 
-    console.log(this.selectedSeats);
+  isSeatAviable(seatNumber:number, floorNumber : number) {
+    const seat = this.arraySeats.find(seat => seat.seatNumber === seatNumber && seat.floorNumber === floorNumber);
+    if (seat != null) {
+      return seat.seatAvailable;
+    }
+    return false;
   }
 }
