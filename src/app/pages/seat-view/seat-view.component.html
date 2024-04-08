@@ -1,54 +1,333 @@
 <app-header></app-header>
 <br>
-<app-stepper></app-stepper>
-<hr style="color: rgb(20, 43, 64);">
+<!-- <app-stepper></app-stepper> -->
 
-<div class="st-container">
-    <div class="st-container-bus">
-        <h5>Elige tu asientos</h5>
-        <div>
-            <app-economic-bus (dataExit)="onActionFromParent($event)" [seatSelectionAvailable]="seatSelectionAvailable"></app-economic-bus>
-            <app-vip-bus></app-vip-bus>
-        </div>
-    </div>
-    <div class="st-info">
-        <p-accordion [activeIndex]="0">
-            <p-accordionTab header="Su selección de viaje" [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </p-accordionTab>
-                <div class="st-description">
-                    Lima -> Cusco abr.11
-                </div>
-        </p-accordion>
-        <p-accordion [activeIndex]="0">
-            <p-accordionTab header="Tus asientos"  [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
-                <p>Lima -> Cusco</p>
-                @for (item of items; track item; let idx = $index, e = $even) {
-                    
-                    <div class="st-items">
-                        <span>Pasajero {{idx + 1}}</span>
-                        <span>S/ {{item.seatNumber}}</span>
+<!-- <hr style="color: rgb(20, 43, 64);"> -->
+
+<div class="container">
+    <p-stepper [linear]="true">
+        <p-stepperPanel header="Selección de asiento">
+            <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                <div class="st-container">
+                    <div class="st-container-bus">
+                        <h5>Elige tu asientos</h5>
+                        <app-economic-bus (dataExit)="onActionFromParent($event)"
+                            [seatSelectionAvailable]="seatSelectionAvailable"></app-economic-bus>
                     </div>
-                }
-            </p-accordionTab>
-            @if(isEnable) {
-                <div class="st-description st-bold">
-                    Total S/ 0
+                    <div class="st-info">
+                        <p-accordion [activeIndex]="0">
+                            <p-accordionTab header="Su selección de viaje"
+                                [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
+                                <div class="st-info__items">
+                                    <div class="st-info__items-date">
+                                        <span><strong>Saliente</strong> - jueves, abr.11</span>
+                                    </div>
+                                    <div class="st-info__items-router">
+                                        <ul>
+                                            <li class="st-router">
+                                                <strong>14:00 PM</strong>
+                                                <div class="st-line"></div>
+                                                <div class="st-router-icon">
+                                                    <svg style="width: 12px; height: 12px; " aria-hidden="true"
+                                                        focusable="false" data-prefix="fas" data-icon="circle-dot"
+                                                        class="svg-inline--fa fa-circle-dot fa-lg " role="img"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                        <path fill="currentColor"
+                                                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                                        </path>
+                                                    </svg>
+                                                    <div class="ant-timeline-item-tail"></div>
+                                                </div>
+                                                <div style="margin-left: 5px;">
+                                                    <strong>LIMA</strong>
+                                                    <br>
+                                                    <span>Javier Prado</span>
+                                                </div>
+                                            </li>
+
+                                            <!-- SE GENERA DINAMICAMENTE DEPENDIENDO LAS ESCALAS -->
+                                            <!-- ---------------------------------------------------------------------- -->
+                                            <li class="st-router st-router-escala">
+                                                <svg style="width: 12px; height:12px; color: #d3dee6;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" class="svg-inline--fa fa-circle fa-xs " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path></svg>
+                                               <div style="margin-left: 5px;"><span>LIMA - PLAZA NORTE</span></div>
+                                            </li>
+
+                                            <!-- ---------------------------------------------------------------------- -->
+
+                                            <li class="st-router st-router-destiny">
+                                                <strong>19:20 PM</strong>
+                                                <div class="st-line st-line-bottom"></div>
+                                                <div>
+                                                    <svg style="width: 12px; height:12px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-dot" class="svg-inline--fa fa-location-dot fa-lg " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                                    <div class="ant-timeline-item-tail"></div>
+                                                </div>
+                                                <div style="margin-left: 5px;">
+                                                    <strong>TRUJILLO</strong>
+                                                    <br>
+                                                    <span>Trujillo</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="st-info__items-datails">
+                                        <div>
+                                            <svg style="height: 100%;" aria-hidden="true" focusable="false"
+                                                data-prefix="fas" data-icon="location-plus"
+                                                class="svg-inline--fa fa-location-plus " role="img"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                <path fill="currentColor"
+                                                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM168 280V216H104c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V104c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z">
+                                                </path>
+                                            </svg>
+                                            2 Escalas
+                                        </div>
+                                        <div>
+                                            <svg style="height: 100%;" aria-hidden="true" focusable="false"
+                                                data-prefix="fas" data-icon="clock" class="svg-inline--fa fa-clock "
+                                                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                <path fill="currentColor"
+                                                    d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z">
+                                                </path>
+                                            </svg>
+                                            17h
+                                        </div>
+                                        <div>
+                                            <svg style="height: 100%;" aria-hidden="true" focusable="false"
+                                                data-prefix="fas" data-icon="users" class="svg-inline--fa fa-users "
+                                                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                                <path fill="currentColor"
+                                                    d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z">
+                                                </path>
+                                            </svg>
+                                            0 pasajeros
+                                        </div>
+                                    </div>
+                                </div>
+                            </p-accordionTab>
+                            <div class="st-description">
+                                Lima -> Cusco abr.11
+                            </div>
+                        </p-accordion>
+                        <p-accordion [activeIndex]="0">
+                            <p-accordionTab header="Tus asientos"
+                                [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
+                                <p>Lima -> Cusco</p>
+                                @for (item of items; track item; let idx = $index, e = $even) {
+
+                                <div class="st-items">
+                                    <span>Pasajero {{idx + 1}}</span>
+                                    <span>S/ {{item.seatNumber}}</span>
+                                </div>
+                                }
+                            </p-accordionTab>
+                            @if(isEnable) {
+                            <div class="st-description st-bold">
+                                Total S/ 0
+                            </div>
+                            }@else {
+                            <div class="st-description">
+                                No hay asientos seleccionados
+                            </div>
+                            }
+
+                        </p-accordion>
+                        <p-toast></p-toast>
+                        <p-button label="Continuar con los pasajero" 
+                        [style]="{'background-color':'#ffc107', 'color': 'rgb(3, 82, 150)','width':'100%', 'border-radius':'5px', 'border':'0px'}"
+                            (onClick)="items.length > 0? nextCallback.emit() : showError()"></p-button>
+                    </div>
                 </div>
-            }@else {
-                <div class="st-description">
-                    No hay asientos seleccionados
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Información del pasajero">
+            <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index" let-prevCallback="prevCallback">
+                <div class="st-container">
+                    <div class="st-container-bus">
+                        <h5>Pasajero 1</h5>
+
+                        <!-- BOOSTRAP -->
+                        <form class="row g-3 needs-validation mx-3 mb-5 mt-1" novalidate id="myForm">
+                            <div class="col-md-6">
+                                <label for="validationCustom01" class="form-label">TIPO DE DOCUMENTO</label>
+                                <select class="form-select" id="validationCustom01" required>
+                                  <option selected disabled value="">Seleccione</option>
+                                  <option>DNI</option>
+                                  <option>Carnet de identidad</option>
+                                  <option>Pasaporte</option>
+                                  <option>Carnet de extranjería</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Please select a valid state.
+                                </div>
+                              </div>
+                            <div class="col-md-6">
+                              <label for="validationCustom02" class="form-label">NÚMERO DE DOCUMENTO</label>
+                              <input type="text" class="form-control" id="validationCustom02" required>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="validationCustom03" class="form-label">NOMBRES</label>
+                                <input type="text" class="form-control" id="validationCustom03" aria-describedby="inputGroupPrepend" required>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="validationCustom04" class="form-label">APELLIDO PATERNO</label>
+                              <input type="text" class="form-control" id="validationCustom04" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                              <label for="validationCustom05" class="form-label">FECHA NACIMIENTO</label>
+                              <input type="text" class="form-control" id="validationCustom05" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom06" class="form-label">NACIONALIDAD</label>
+                                <select class="form-select" id="validationCustom06" required>
+                                    <option selected disabled value="">Seleccione</option>
+                                    <option>Perú</option>
+                                    <option>Mexico</option>
+                                  </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom07" class="form-label">GÉNERO</label>
+                                <select class="form-select" id="validationCustom07" required>
+                                    <option selected disabled value="">Seleccione</option>
+                                    <option>Femenino</option>
+                                    <option>Masculino</option>
+                                  </select>
+                              </div>
+                          </form>
+
+
+
+
+                    </div>
+                    <div class="st-info">
+                        <p-accordion [activeIndex]="0">
+                            <p-accordionTab header="Su selección de viaje"
+                                [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
+                                <div class="st-info__items">
+                                    <div class="st-info__items-date">
+                                        <span><strong>Saliente</strong> - jueves, abr.11</span>
+                                    </div>
+                                    <div class="st-info__items-router">
+                                        <ul>
+                                            <li class="st-router">
+                                                <strong>14:00 PM</strong>
+                                                <div class="st-line"></div>
+                                                <div class="st-router-icon">
+                                                    <svg style="width: 12px; height: 12px; " aria-hidden="true"
+                                                        focusable="false" data-prefix="fas" data-icon="circle-dot"
+                                                        class="svg-inline--fa fa-circle-dot fa-lg " role="img"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                        <path fill="currentColor"
+                                                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                                        </path>
+                                                    </svg>
+                                                    <div class="ant-timeline-item-tail"></div>
+                                                </div>
+                                                <div style="margin-left: 5px;">
+                                                    <strong>LIMA</strong>
+                                                    <br>
+                                                    <span>Javier Prado</span>
+                                                </div>
+                                            </li>
+
+                                            <!-- SE GENERA DINAMICAMENTE DEPENDIENDO LAS ESCALAS -->
+                                            <!-- ---------------------------------------------------------------------- -->
+                                            <li class="st-router st-router-escala">
+                                                <svg style="width: 12px; height:12px; color: #d3dee6;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" class="svg-inline--fa fa-circle fa-xs " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"></path></svg>
+                                               <div style="margin-left: 5px;"><span>LIMA - PLAZA NORTE</span></div>
+                                            </li>
+
+                                            <!-- ---------------------------------------------------------------------- -->
+
+                                            <li class="st-router st-router-destiny">
+                                                <strong>19:20 PM</strong>
+                                                <div class="st-line st-line-bottom"></div>
+                                                <div>
+                                                    <svg style="width: 12px; height:12px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-dot" class="svg-inline--fa fa-location-dot fa-lg " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg>
+                                                    <div class="ant-timeline-item-tail"></div>
+                                                </div>
+                                                <div style="margin-left: 5px;">
+                                                    <strong>TRUJILLO</strong>
+                                                    <br>
+                                                    <span>Trujillo</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="st-info__items-datails">
+                                        <div>
+                                            <svg style="height: 100%;" aria-hidden="true" focusable="false"
+                                                data-prefix="fas" data-icon="location-plus"
+                                                class="svg-inline--fa fa-location-plus " role="img"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                <path fill="currentColor"
+                                                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM168 280V216H104c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V104c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z">
+                                                </path>
+                                            </svg>
+                                            2 Escalas
+                                        </div>
+                                        <div>
+                                            <svg style="height: 100%;" aria-hidden="true" focusable="false"
+                                                data-prefix="fas" data-icon="clock" class="svg-inline--fa fa-clock "
+                                                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                <path fill="currentColor"
+                                                    d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z">
+                                                </path>
+                                            </svg>
+                                            17h
+                                        </div>
+                                        <div>
+                                            <svg style="height: 100%;" aria-hidden="true" focusable="false"
+                                                data-prefix="fas" data-icon="users" class="svg-inline--fa fa-users "
+                                                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                                <path fill="currentColor"
+                                                    d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z">
+                                                </path>
+                                            </svg>
+                                            0 pasajeros
+                                        </div>
+                                    </div>
+                                </div>
+                            </p-accordionTab>
+                            <div class="st-description">
+                                Lima -> Cusco abr.11
+                            </div>
+                        </p-accordion>
+                        <p-accordion [activeIndex]="0">
+                            <p-accordionTab header="Tus asientos"
+                                [headerStyle]="{'text-decoration':'none', 'color': 'rgb(3, 82, 150)'}">
+                                <p>Lima -> Cusco</p>
+                                @for (item of items; track item; let idx = $index, e = $even) {
+
+                                <div class="st-items">
+                                    <span>Pasajero {{idx + 1}}</span>
+                                    <span>S/ {{item.seatNumber}}</span>
+                                </div>
+                                }
+                            </p-accordionTab>
+                            @if(isEnable) {
+                            <div class="st-description st-bold">
+                                Total S/ 0
+                            </div>
+                            }@else {
+                            <div class="st-description">
+                                No hay asientos seleccionados
+                            </div>
+                            }
+
+                        </p-accordion>
+                        <p-toast></p-toast>
+                        <p-button label="Continuar con los pasajero" 
+                        [style]="{'background-color':'#ffc107', 'color': 'rgb(3, 82, 150)','width':'100%', 'border-radius':'5px', 'border':'0px'}"
+                        (onClick)="condicion()? nextCallback.emit(): null"></p-button>
+                    </div>
                 </div>
-            }
-            
-        </p-accordion>
-        <p-toast></p-toast>
-        <a class="btn btn-warning p-2 rounded-3" style="width: 100%; font-size: 18px; font-weight: bold; color: rgb(3, 82, 150);"
-        (click)="showError()">Continuar con los pasajero</a>
-    </div>
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Pago">
+
+        </p-stepperPanel>
+    </p-stepper>
 </div>
-
-

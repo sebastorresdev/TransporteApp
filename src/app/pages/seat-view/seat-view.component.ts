@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Output, ViewChild, EventEmitter } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { StepperComponent } from '../../components/stepper/stepper.component';
 import { AccordionModule } from 'primeng/accordion';
@@ -8,6 +8,10 @@ import { PremiumBusComponent } from '../../components/premium-bus/premium-bus.co
 import { StandardBusComponent } from '../../components/standard-bus/standard-bus.component';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { StepperModule} from 'primeng/stepper';
+import { ButtonModule } from 'primeng/button';
+import { MessagesModule } from 'primeng/messages';
+import { query } from 'express';
 
 @Component({
   selector: 'app-seat-view',
@@ -20,8 +24,11 @@ import { ToastModule } from 'primeng/toast';
     VipBusComponent,
     PremiumBusComponent,
     StandardBusComponent,
-    ToastModule
-  ],
+    ToastModule,
+    StepperModule,
+    ButtonModule,
+    MessagesModule
+    ],
   providers: [MessageService],
   templateUrl: './seat-view.component.html',
   styleUrl: './seat-view.component.css'
@@ -29,8 +36,11 @@ import { ToastModule } from 'primeng/toast';
 export class SeatViewComponent {
   isEnable = false;
   seatSelectionAvailable = true;
+  @ViewChild('#validationCustom02') miElementoRef!: ElementRef;
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private elementRef: ElementRef) {
+    
+  }
   // DEBO TENER AQUI LOS PRECIOS POR ACIENTOS, AL MOMENTO QUE EL USUARIO SELECCIONE UN ASIENTO DEBE OBTENER EL PRECIOS
   // Y MOSTRAR EN LA VISTA
   // ARRAY DE OBJETO QUE CONTENGA EL ASIENTO, NUMERO_PISO, PRECIO
@@ -67,9 +77,31 @@ export class SeatViewComponent {
   }
 
   showError() {
-    this.messageService.add({ severity: 'warn', summary: 'Limite maximo', detail: 'Message Content' });
+    this.messageService.add({ severity: 'warn', summary: 'Seleccione asiento(s).', detail: 'Seleccione asiento(s) de salida.'});
   }
 
+  condicion():boolean {
 
+    const form : HTMLFormElement | null = this.elementRef.nativeElement.querySelector('#myForm');
+    const inputElement1: HTMLSelectElement | null = this.elementRef.nativeElement.querySelector('#validationCustom01');
+    const inputElement2: HTMLInputElement | null = this.elementRef.nativeElement.querySelector('#validationCustom02');
+    const inputElement3: HTMLInputElement | null = this.elementRef.nativeElement.querySelector('#validationCustom03');
+    const inputElement4: HTMLInputElement | null = this.elementRef.nativeElement.querySelector('#validationCustom04');
+    const inputElement5: HTMLInputElement | null = this.elementRef.nativeElement.querySelector('#validationCustom05');
+    const inputElement6: HTMLSelectElement | null = this.elementRef.nativeElement.querySelector('#validationCustom06');
+    const inputElement7: HTMLSelectElement | null = this.elementRef.nativeElement.querySelector('#validationCustom07');
+
+
+    if (inputElement1?.value == '' || inputElement2?.value == '' 
+      || inputElement3?.value == '' || inputElement4?.value == ''
+      || inputElement5?.value == '' || inputElement6?.value == ''
+      || inputElement7?.value == ''
+    ) {
+      // Obtener y mostrar el valor del input
+      form?.classList.add('was-validated');
+      return false;
+    }
+    return true;
+  }
 
 }

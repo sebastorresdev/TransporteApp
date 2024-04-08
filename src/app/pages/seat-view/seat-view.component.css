@@ -1,19 +1,26 @@
+.st-body {
+    padding: 0px 50px;
+}
+
 .st-container {
     display: flex;
+    width: 100%;
     justify-content: center;
-    gap: 100px;
+    flex-wrap: wrap;
+    gap: 3.5em;
     color: rgb(117, 142, 161);
 }
 
 .st-container-bus{
-    border-radius: 10px;
+    border-radius: 5px;
+    width: 550px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 0.2rem 0px;
-    width: 40%;
     display: flex;
     flex-direction: column;  
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    margin: 30px 0px;
+    flex-grow: 1;
+    height: 100%;
 }
 
 .st-container-bus>h5{
@@ -30,9 +37,9 @@
 .st-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 30%;
-    margin: 30px 0px;
+    gap: 10px;
+    flex-grow: 1;
+    width: 300px;
 }
 
 .st-description {
@@ -54,3 +61,72 @@
     font-weight: bold;
     color: rgb(3, 82, 150);
 }
+
+.st-info__items {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: rgb(32, 65, 90);
+}
+
+.st-info__items-date {
+    text-align: end;
+}
+.st-info__items-date>span {
+    border-radius: 10px;
+    background-color: rgb(230, 246, 255);
+    padding: 0.4em 0.6em;
+}
+
+.st-info__items-router {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.st-info__items-router>ul {
+    padding: 0px;
+    margin: 0px;
+}
+.st-router {
+    display: flex;
+    width: 200px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.st-line {
+    position: absolute;
+    border: 1px solid rgb(228, 232, 238);
+    height: 34px;
+    left: 75px;
+    top:20px
+}
+.st-router-escala {
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 5px 70px;
+    font-size: 12px;
+}
+.st-router>strong{
+    display: block;
+    width: 70px;
+}
+.st-router-destiny {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.st-line-bottom {
+    top:-15px;
+}
+.st-info__items-datails {
+    display: flex;
+    gap: 10px;
+    height: 15px;
+}
+
+.custom-message {
+    background-color: #ffcccb; /* Color de fondo rosa claro */
+    color: #ff0000; /* Color de texto rojo */
+    border: 1px solid #ff0000; /* Borde rojo */
+    padding: 10px; /* Espaciado interno */
+  }
